@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sentiment Analysis</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <div class="container">
+        <form method="POST">
+            <textarea id="texto" name="texto" placeholder="Escribe tu mensaje aquí..." required></textarea>
+            <button type="submit">Analizar</button>
+        </form>
+        {% if resultado %}
+            <div class="resultado">
+                <p class="texto 
+                    {% if resultado == 'Negativo' %}
+                        negativo
+                    {% elif resultado == 'Neutral' %}
+                        neutral
+                    {% elif resultado == 'Positivo' %}
+                        positivo
+                    {% endif %}
+                ">
+                    {% if resultado == 'Negativo' %}
+                        Sentimiento Negativo
+                    {% elif resultado == 'Neutral' %}
+                        Sentimiento Neutral
+                    {% elif resultado == 'Positivo' %}
+                        Sentimiento Positivo
+                    {% endif %}
+                </p>
+            </div>
+        {% endif %}
+    </div>
+</body>
+</html>
